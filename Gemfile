@@ -35,6 +35,7 @@ group :development, :test do
   gem "awesome_print"
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "dotenv-rails"
+  gem "faker"
   gem "pry-byebug"
   gem "pry-rails"
 end

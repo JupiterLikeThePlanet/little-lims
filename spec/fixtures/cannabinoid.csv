@@ -1,0 +1,14 @@
+Sample name:,1703RAD1116.0001
+Operator:,Eric Martin,Data file:,1902CSALA0665.2490.dx
+Instrument:,HPLC 3,Injection date:,2019-02-05 19:48:21-08:00
+Acq. method:,Cannabinoids Method 12-06-2018.amx,Type:,Sample
+Processing method:,Cannabinoids Calibration 12-06-2018.pmx,Inj. volume:,3.000
+Manually modified:,Manual Integration,Sample amount:,666.10
+Signal:,"* DAD1A,Sig=230.0,4.0  Ref=360.0,100.0 [s]"
+Name,Amount  [ug/mL],RT [min],RF,Area,Concentration  [%]
+CBG,0.646,2.48,4.125,2.663,0.097
+CBDA,0.514,2.76,6.004,3.085,0.076
+CBGA,3.100,3.15,9.635,29.867,0.453
+D9THC,6.074,4.23,4.793,29.112,0.867
+THCA,143.911,6.01,9.018,1297.846,20.741
+Sum,154.244,,,,

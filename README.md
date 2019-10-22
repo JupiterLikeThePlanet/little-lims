@@ -1,36 +1,24 @@
-# Little-lims
+# Background
+
+This code exercise is intended to evaluate your software engineering skills but also give you an introduction into the types of problems we solve at Cannasafe. Your solution will be evaluated based on the ability to produce intended results, cleanliness, adherence to best practices, maintainability, and readability. You should write code like you would if this were an actual assignment. You do not need to gold plate your solution, but we are looking for something more than a script. Ideally your solution would demonstrate your understand of object-oriented principles and best practices.
 
 ## Getting Started
 
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
+You'll need to setup your development environment with Ruby. This step is platform dependent, so you'll need to figure it out yourself.
 
-    % ./bin/setup
+``` bash
+$ bundle install        # Install dependencies
+$ rails db:setup        # Set up the local database
+```
 
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
+## Your assignment
 
-[this script]: https://github.com/thoughtbot/laptop
+---
 
-After setting up, you can run the application using [Heroku Local]:
+After completing each of the steps below, commit your changes to your local clone with a meaningful commit message.
 
-    % heroku local
+1.) The `Sample` model needs the ability to automatically calculate unit_weight_in_grams when the unit_of_measurement is in milliliters or fluid_ounces and the density is available. The density is stored in grams per milliliter and we will assume all 'fluid_ounces' imperial fluid ounces. There are some commented out assertions in `spec/models/sample_spec.rb` which should pass once this step is completed.
 
-[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
+2.) The `UnitConverter` service knows how to convert to/from the units of measurement listed within it. Add a new unit called 'MILLIGRAMS_PER_MILLILITER' and update the service so that it can convert to/from this unit. There are some commented out assertions in `spec/services/unit_converter_spec.rb` which should pass once this step is completed.
 
-## Guidelines
-
-Use the following guides for getting things done, programming well, and
-programming in style.
-
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
-
-## Deploying
-
-If you have previously run the `./bin/setup` script,
-you can deploy to staging and production with:
-
-    % ./bin/deploy staging
-    % ./bin/deploy production
+3.) There is a fixture file located at `spec/fixtures/cannabinoid.csv` that stores some test result data for a handful of cannabinoids. Create a service which parses files with this format and creates test result data for a `SampleTestReport` for a sample with the name provided in the file. The values should be stored in percentages. Add a migration file for any new table(s) you create to store this data.

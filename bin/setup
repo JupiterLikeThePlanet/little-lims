@@ -10,19 +10,5 @@ set -e
 gem install bundler --conservative
 bundle check || bundle install
 
-# Install JavaScript dependencies
-bin/yarn
-
 # Set up database and add any development seed data
-bin/rails dev:prime
-
-if [ ! -d .git/safe ] && echo $PATH | grep .git/safe > /dev/null; then
-  echo "-----------------------------------------------------------------------"
-  echo
-  echo "-> When you trust this repo, remember to run: mkdir -p .git/safe"
-  echo
-fi
-
-# Only if this isn't CI
-# if [ -z "$CI" ]; then
-# fi
+bundle exec rake db:setup
