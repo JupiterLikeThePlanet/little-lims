@@ -13,16 +13,16 @@ RSpec.describe UnitConverter, type: :service do
       sample_test: sample_test,
       sample_report: sample_report,
       decimal_places: decimal_places,
-      input_units: iu,
-      primary_display_units: pdu,
-      secondary_display_units: sdu
+      input_units: input_units,
+      primary_display_units: primary_display_units,
+      secondary_display_units: secondary_display_units
     )
   end
 
   describe '#convert' do
-    let(:iu) { UnitConverter::PERCENTAGE }
-    let(:pdu) { UnitConverter::PERCENTAGE }
-    let(:sdu) { UnitConverter::PARTS_PER_MILLION }
+    let(:input_units) { UnitConverter::PERCENTAGE }
+    let(:primary_display_units) { UnitConverter::PERCENTAGE }
+    let(:secondary_display_units) { UnitConverter::PARTS_PER_MILLION }
     let(:original_value) { 5 }
     let(:converted_value) { subject.convert(original_value) }
 
@@ -39,29 +39,29 @@ RSpec.describe UnitConverter, type: :service do
     end
 
     context 'display_units is :secondary_display_units' do
-      let(:sdu) { UnitConverter::PARTS_PER_MILLION }
+      let(:secondary_display_units) { UnitConverter::PARTS_PER_MILLION }
 
       it { expect(subject.convert(original_value, display_units: :secondary_display_units)).to eq(50_000) }
     end
 
     # Defaults to :primary_display_units
     context 'input_unit is PERCENTAGE' do
-      let(:iu) { UnitConverter::PERCENTAGE }
+      let(:input_units) { UnitConverter::PERCENTAGE }
 
       context 'primary_unit is PERCENTAGE' do
-        let(:pdu) { UnitConverter::PERCENTAGE }
+        let(:primary_display_units) { UnitConverter::PERCENTAGE }
 
         it { expect(converted_value).to eq(original_value) }
       end
 
       context 'primary_unit is MILLIGRAMS_PER_GRAM' do
-        let(:pdu) { UnitConverter::MILLIGRAMS_PER_GRAM }
+        let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_GRAM }
 
         it { expect(converted_value).to eq(50) }
       end
 
       context 'primary_unit is PARTS_PER_MILLION' do
-        let(:pdu) { UnitConverter::PARTS_PER_MILLION }
+        let(:primary_display_units) { UnitConverter::PARTS_PER_MILLION }
 
         it { expect(converted_value).to eq(50_000) }
       end
@@ -69,29 +69,29 @@ RSpec.describe UnitConverter, type: :service do
       # context 'primary_unit is MILLIGRAMS_PER_MILLILITER' do
       #   before { sample.update!(grams_per_ml: 5) }
       #
-      #   let(:pdu) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
+      #   let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
       #
       #   it { expect(converted_value).to eq(250) }
       # end
     end
 
     context 'input_unit is MILLIGRAMS_PER_GRAM' do
-      let(:iu) { UnitConverter::MILLIGRAMS_PER_GRAM }
+      let(:input_units) { UnitConverter::MILLIGRAMS_PER_GRAM }
 
       context 'primary_unit is PERCENTAGE' do
-        let(:pdu) { UnitConverter::PERCENTAGE }
+        let(:primary_display_units) { UnitConverter::PERCENTAGE }
 
         it { expect(converted_value).to eq(0.5) }
       end
 
       context 'primary_unit is MILLIGRAMS_PER_GRAM' do
-        let(:pdu) { UnitConverter::MILLIGRAMS_PER_GRAM }
+        let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_GRAM }
 
         it { expect(converted_value).to eq(original_value) }
       end
 
       context 'primary_unit is PARTS_PER_MILLION' do
-        let(:pdu) { UnitConverter::PARTS_PER_MILLION }
+        let(:primary_display_units) { UnitConverter::PARTS_PER_MILLION }
 
         it { expect(converted_value).to eq(5_000) }
       end
@@ -99,29 +99,29 @@ RSpec.describe UnitConverter, type: :service do
       # context 'primary_unit is MILLIGRAMS_PER_MILLILITER' do
       #   before { sample.update!(grams_per_ml: 5) }
       #
-      #   let(:pdu) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
+      #   let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
       #
       #   it { expect(converted_value).to eq(25) }
       # end
     end
 
     context 'input_unit is PARTS_PER_MILLION' do
-      let(:iu) { UnitConverter::PARTS_PER_MILLION }
+      let(:input_units) { UnitConverter::PARTS_PER_MILLION }
 
       context 'primary_unit is PERCENTAGE' do
-        let(:pdu) { UnitConverter::PERCENTAGE }
+        let(:primary_display_units) { UnitConverter::PERCENTAGE }
 
         it { expect(converted_value).to be_within(1e-7).of(0.0005) }
       end
 
       context 'primary_unit is MILLIGRAMS_PER_GRAM' do
-        let(:pdu) { UnitConverter::MILLIGRAMS_PER_GRAM }
+        let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_GRAM }
 
         it { expect(converted_value).to be_within(1e-7).of(0.005) }
       end
 
       context 'primary_unit is PARTS_PER_MILLION' do
-        let(:pdu) { UnitConverter::PARTS_PER_MILLION }
+        let(:primary_display_units) { UnitConverter::PARTS_PER_MILLION }
 
         it { expect(converted_value).to eq(original_value) }
       end
@@ -129,7 +129,7 @@ RSpec.describe UnitConverter, type: :service do
       # context 'primary_unit is MILLIGRAMS_PER_MILLILITER' do
       #   before { sample.update!(grams_per_ml: 5) }
       #
-      #   let(:pdu) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
+      #   let(:primary_display_units) { UnitConverter::MILLIGRAMS_PER_MILLILITER }
       #
       #   it { expect(converted_value).to eq(0.025) }
       # end
