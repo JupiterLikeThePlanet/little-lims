@@ -21,4 +21,4 @@ After completing each of the steps below, commit your changes to your local clon
 
 3.) There is a fixture file located at `spec/fixtures/cannabinoid.csv` that stores some test result data for a handful of cannabinoids. Create a service which parses files with this format and creates test result data for a `SampleTestReport` for a sample with the name provided in the file. The values should be stored in percentages. Add a migration file and for any new table(s) you created to store this data. Be sure to add at least some basic specs which cover your new code.
 
-4.) Create a git bundle with your changes and send it to `anna@csalabs.com` along with a brief explanation of your solution. **Do not push your solution to GitHub.**
+4.) Create a git bundle with your changes and email it to `anna@csalabs.com` along with a brief explanation of your solution. Be sure to include 'little-lims' in the email subject. **Do not push your solution to GitHub.**
