@@ -1,10 +1,4 @@
-# Background
-
-This code exercise is intended to evaluate your software engineering skills but also give you an introduction into the types of problems we solve at Cannasafe. Your solution will be evaluated based on the ability to produce intended results, cleanliness, adherence to best practices, maintainability, and readability. You should write code like you would if this were an actual assignment. You do not need to gold plate your solution, but we are looking for something more than a script. Ideally your solution would demonstrate your understand of object-oriented principles and best practices.
-
 ## Getting Started
-
-You'll need to set up your development environment with Ruby. This step is platform dependent, so you'll need to figure it out yourself.
 
 ``` bash
 $ bundle install        # Install dependencies
